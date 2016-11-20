@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/heatcontrol/getstate',methods=['GET'])
 def getState():
-    return jsonify({'state': True})
+    return jsonify({'state': False})
 
 def is_interface_up(interface):
     addr = netifaces.ifaddresses(interface)
