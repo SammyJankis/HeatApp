@@ -14,7 +14,7 @@ save
 join
 reboot
 '''
-host=wifly_host
+host = wifly_host
 port = wifly_port
 tn = telnetlib.Telnet()
 
