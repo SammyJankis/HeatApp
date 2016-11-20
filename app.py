@@ -14,6 +14,6 @@ def is_interface_up(interface):
     return netifaces.AF_INET in addr
 
 if __name__ == '__main__':
-    while not is_interface_up('wlan0'):
-	time.sleep(10)
-    app.run(host=rasp_host,port=rasp_port,debug=True)
+	while not is_interface_up('wlan0'):
+		time.sleep(10)
+	app.run(host=rasp_host,port=rasp_port,debug=True)
