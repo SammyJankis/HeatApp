@@ -2,11 +2,15 @@
 from flask import Flask, jsonify
 from credentials import *
 import netifaces, time
+from wifly import *
+import mysqlcontroller
 
 app = Flask(__name__)
 
-@app.route('/heatcontrol/getstate',methods=['GET'])
-def getState():
+@app.route('/heatcontrol/getradiator',methods=['GET'])
+def getRadiator():
+	id = request.args.get('id')
+	lastregisters = get_last_twenty_registers(id);
     return jsonify({'state': False})
 
 def is_interface_up(interface):

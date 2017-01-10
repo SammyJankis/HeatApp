@@ -22,7 +22,7 @@ tn = telnetlib.Telnet()
 #de esta forma podemos utilizar ips con dhcp, la mac de wifly
 def openConnection():
 	try :
-		tn.open(host,2000,timeout = 1)
+		tn.open(host,2000,timeout = 10)
 		#print 'Connected to '+ host
 	except :
 		print 'Unable to connect'
@@ -72,8 +72,14 @@ def getSensorInMv(pinNumber):
 		print "Analog interface goes from 0 to 7"
 	else:
 		varHx = cmd("show q "+str(pinNumber))
-		varInt = int(varHx[1:-1],16)/1000
+		varInt = int(varHx[1:-1],16)
+		print varInt
 		return varInt
+
+def getTempInCelsius(pinNumber):
+	varMv = getSensorInMv(pinNumber)
+	varTempAmbient = (0.5 * varMv - 50000)/1000
+	return varTempAmbient
 
 def setPin7On():
 	response = cmd("set sys output 0x0080 0x0080")
